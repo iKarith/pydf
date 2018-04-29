@@ -386,9 +386,7 @@ def get_row_mp(mp):
             status = os.statvfs(mp)
         except (OSError, IOError):
             status = DumbStatus()
-        fs_blocksize = status.f_bsize
-        if fs_blocksize == 0:
-            fs_blocksize = status.f_frsize
+        fs_blocksize = status.f_frsize
         free = status.f_bfree
         size = status.f_blocks
         avail = status.f_bavail
